@@ -353,12 +353,6 @@ end
 -- Nellis AFB Commander
 local NellisCom = COMMANDER:New(coalition.side.BLUE, "Nellis Commander")
 
-
--- Flight Controller
-local nellisAB = AIRBASE:FindByName(AIRBASE.Nevada.Nellis)
-nellisAB:SetActiveRunwayLanding("03L")
-nellisAB:SetActiveRunwayTakeoff("03R")
-
 ---
 -- Mission Manangement
 ---

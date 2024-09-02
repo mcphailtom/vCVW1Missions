@@ -6,49 +6,49 @@ atcMcCarran:SetLimitLanding(2, 99)
 atcMcCarran:Start()
 
 
-local A320DAirlineZone1 = SPAWN:New( "A320D AirlineZone1" )
+local A320DAirlineZone1 = SPAWN:New( "AA727 AirlineZone1" )
 :InitLimit( 3 , 0 )
 :InitCleanUp(300)
 :OnSpawnGroup(
     function(spawngrp)
-        local A320DAirlineZone1FG1 = FLIGHTGROUP:New(spawngrp)
-        A320DAirlineZone1FG1:SetFlightControl(atcMcCarran)
+        local AA727AirlineZone1FG1 = FLIGHTGROUP:New(spawngrp)
+        AA727AirlineZone1FG1:SetFlightControl(atcMcCarran)
 
     end
 )
 :SpawnScheduled( 600 , .5 )
 
-local A320DAirlineZone2 = SPAWN:New( "A320D AirlineZone2" )
+local DA727AirlineZone2 = SPAWN:New( "DA727 AirlineZone2" )
 :InitLimit( 3 , 0 )
 :InitCleanUp(300)
 :OnSpawnGroup(
     function(spawngrp)
-        local A320DAirlineZone2FG1 = FLIGHTGROUP:New(spawngrp)
-        A320DAirlineZone2FG1:SetFlightControl(atcMcCarran)
+        local DA727AirlineZone2FG1 = FLIGHTGROUP:New(spawngrp)
+        DA727AirlineZone2FG1:SetFlightControl(atcMcCarran)
 
     end
 )
 :SpawnScheduled( 600 , .5 )
 
-local A320DAirlineZone3 = SPAWN:New( "A320D AirlineZone3" )
+local U727AirlineZone3 = SPAWN:New( "U727 AirlineZone3" )
 :InitLimit( 3 , 0 )
 :InitCleanUp(300)
 :OnSpawnGroup(
     function(spawngrp)
-        local A320DAirlineZone3FG1 = FLIGHTGROUP:New(spawngrp)
-        A320DAirlineZone3FG1:SetFlightControl(atcMcCarran)
+        local U727AirlineZone3FG1 = FLIGHTGROUP:New(spawngrp)
+        U727AirlineZone3FG1:SetFlightControl(atcMcCarran)
 
     end
 )
 :SpawnScheduled( 600 , .5 )
 
-local A320DAirlineZone4 = SPAWN:New( "A320D AirlineZone4" )
+local AA737AirlineZone4 = SPAWN:New( "AA737 AirlineZone4" )
 :InitLimit( 3 , 0 )
 :InitCleanUp(300)
 :OnSpawnGroup(
     function(spawngrp)
-        local A320DAirlineZone4FG1 = FLIGHTGROUP:New(spawngrp)
-        A320DAirlineZone4FG1:SetFlightControl(atcMcCarran)
+        local AA737AirlineZone4FG1 = FLIGHTGROUP:New(spawngrp)
+        AA737AirlineZone4FG1:SetFlightControl(atcMcCarran)
 
     end
 )
@@ -83,7 +83,7 @@ local F16TonCreech = SPAWN:New( "F-16 Ton-Creech" )
 )
 :SpawnScheduled( 1800 , .5 )
 
-local B2TonCreech = SPAWN:New( "B2 Ton-Creech" )
+local B2TonCreech = SPAWN:New( "B1B Ton-Creech" )
 :InitLimit( 3 , 0 )
 :InitCleanUp(300)
 :OnSpawnGroup(
