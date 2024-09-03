@@ -67,6 +67,11 @@ atcTonopahTest:SetLimitTaxi(3, false, 1)
 atcTonopahTest:SetLimitLanding(2, 99)
 atcTonopahTest:Start()
 
+local atcNellis=FLIGHTCONTROL:New(AIRBASE.Nevada.Nellis, 251,nil)
+atcNellis:SetSpeedLimitTaxi(25)
+atcNellis:SetLimitTaxi(3, false, 1)
+atcNellis:SetLimitLanding(2, 99)
+atcNellis:Start()
 
 local F16TonCreech = SPAWN:New( "F-16 Ton-Creech" )
 :InitLimit( 3 , 0 )
@@ -77,22 +82,52 @@ local F16TonCreech = SPAWN:New( "F-16 Ton-Creech" )
         F16TonCreechFG1:SetFlightControl(atcTonopahTest)
 
         function F16TonCreechFG1:OnAfterTakeoff(From, Event, To)
-            F16TonCreechFG1:SetFlightControl(atcTonopahTest)
+            F16TonCreechFG1:SetFlightControl(atcCreech)
         end
     end
 )
 :SpawnScheduled( 1800 , .5 )
 
-local B2TonCreech = SPAWN:New( "B1B Ton-Creech" )
+local B2TonTon = SPAWN:New( "B1B Ton-Ton" )
 :InitLimit( 3 , 0 )
 :InitCleanUp(300)
 :OnSpawnGroup(
     function(spawngrp)
-        local B2TonCreechFG1 = FLIGHTGROUP:New(spawngrp)
-        B2TonCreechFG1:SetFlightControl(atcTonopahTest)
+        local B2TonTonFG1 = FLIGHTGROUP:New(spawngrp)
+        B2TonTonFG1:SetFlightControl(atcTonopahTest)
 
-        function B2TonCreechFG1:OnAfterTakeoff(From, Event, To)
-            B2TonCreechFG1:SetFlightControl(atcTonopahTest)
+        function B2TonTonFG1:OnAfterTakeoff(From, Event, To)
+            B2TonTonFG1:SetFlightControl(atcTonopahTest)
+        end
+    end
+)
+:SpawnScheduled( 1800 , .5 )
+
+local F16NellisTon = SPAWN:New( "F-16 Nellis-Ton" )
+:InitLimit( 3 , 0 )
+:InitCleanUp(300)
+:OnSpawnGroup(
+    function(spawngrp)
+        local F16NellisTonFG1 = FLIGHTGROUP:New(spawngrp)
+        F16NellisTonFG1:SetFlightControl(atcTonopahTest)
+
+        function F16NellisTonFG1:OnAfterTakeoff(From, Event, To)
+            F16NellisTonFG1:SetFlightControl(atcNellis)
+        end
+    end
+)
+:SpawnScheduled( 1800 , .5 )
+
+local F4ENellisTon = SPAWN:New( "F-4E Nellis-Ton" )
+:InitLimit( 3 , 0 )
+:InitCleanUp(300)
+:OnSpawnGroup(
+    function(spawngrp)
+        local F4ENellisTonFG1 = FLIGHTGROUP:New(spawngrp)
+        F4ENellisTonFG1:SetFlightControl(atcTonopahTest)
+
+        function F4ENellisTonFG1:OnAfterTakeoff(From, Event, To)
+            F4ENellisTonFG1:SetFlightControl(atcNellis)
         end
     end
 )
