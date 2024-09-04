@@ -11,7 +11,7 @@ DogboneRange:SetSRSRangeInstructor(250.5, radio.modulation.AM, nil, "en-US", "ma
 DogboneRange:SetSRSRangeControl(395, radio.modulation.AM, nil, "en-US", "male", "Range Relay")
 
 DogboneRange:TrackRocketsOFF()
-DogboneRange:SetRangeRadius(15)
+DogboneRange:SetRangeRadius(5)
 
 DogboneRange:SetAutosaveOn(".\\range\\")
 
@@ -97,11 +97,11 @@ R62B:AddBombingTargets(bombtargets, 3)
 
 -- Set Range Frequencys and initialise
 R62B:SetSRS('')
-R62B:SetSRSRangeInstructor(250.5, radio.modulation.AM, nil, "en-US", "male", "Range Relay")
-R62B:SetSRSRangeControl(395, radio.modulation.AM, nil, "en-US", "male", "Range Relay")
+R62B:SetSRSRangeInstructor(249.5, radio.modulation.AM, nil, "en-US", "male", "Range Relay")
+R62B:SetSRSRangeControl(394, radio.modulation.AM, nil, "en-US", "male", "Range Relay")
 
 R62B:TrackRocketsOFF()
-R62B:SetRangeRadius(15)
+R62B:SetRangeRadius(5)
 
 R62B:SetAutosaveOn(".\\range\\")
 
