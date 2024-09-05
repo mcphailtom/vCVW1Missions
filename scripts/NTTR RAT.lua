@@ -1,10 +1,4 @@
--- Create a new FLIGHTCONTROL object at Nellis AFB. The tower frequency is 251 MHz AM. Path to SRS has to be adjusted. 
-local atcMcCarran=FLIGHTCONTROL:New(AIRBASE.Nevada.McCarran_International, 257.8,nil)
-atcMcCarran:SetSpeedLimitTaxi(25)
-atcMcCarran:SetLimitTaxi(4, false, 1)
-atcMcCarran:SetLimitLanding(2, 4)
-atcMcCarran:Start()
-
+-- Civilian Traffic for NTTR RAT
 
 local A320DAirlineZone1 = SPAWN:New( "AA727 AirlineZone1" )
 :InitLimit( 3 , 0 )
@@ -16,7 +10,7 @@ local A320DAirlineZone1 = SPAWN:New( "AA727 AirlineZone1" )
 
     end
 )
-:SpawnScheduled( 600 , .5 )
+:SpawnScheduled( 900 , .5 )
 
 local DA727AirlineZone2 = SPAWN:New( "DA727 AirlineZone2" )
 :InitLimit( 3 , 0 )
@@ -28,7 +22,7 @@ local DA727AirlineZone2 = SPAWN:New( "DA727 AirlineZone2" )
 
     end
 )
-:SpawnScheduled( 600 , .5 )
+:SpawnScheduled( 900, .5 )
 
 local U727AirlineZone3 = SPAWN:New( "U727 AirlineZone3" )
 :InitLimit( 3 , 0 )
@@ -40,7 +34,7 @@ local U727AirlineZone3 = SPAWN:New( "U727 AirlineZone3" )
 
     end
 )
-:SpawnScheduled( 600 , .5 )
+:SpawnScheduled( 900 , .5 )
 
 local AA737AirlineZone4 = SPAWN:New( "AA737 AirlineZone4" )
 :InitLimit( 3 , 0 )
@@ -52,58 +46,27 @@ local AA737AirlineZone4 = SPAWN:New( "AA737 AirlineZone4" )
 
     end
 )
-:SpawnScheduled( 600 , .5 )
+:SpawnScheduled( 900, .5 )
 
+-- Military Traffic for NTTR RAT
+SCHEDULER:New(nil, function()
+    local B1BTonCreech = SPAWN:New( "B1B Ton-Creech" )
+    :InitLimit( 3 , 0 )
+    :InitCleanUp(300)
+    :OnSpawnGroup(
+        function(spawngrp)
+            local B1BTonCreechFG1 = FLIGHTGROUP:New(spawngrp)
+            B1BTonCreechFG1:SetFlightControl(atcTonopahTest)
 
-local atcCreech=FLIGHTCONTROL:New(AIRBASE.Nevada.Creech, 360.6,nil)
-atcCreech:SetSpeedLimitTaxi(25)
-atcCreech:SetLimitTaxi(3, false, 1)
-atcCreech:SetLimitLanding(2, 4)
-atcCreech:Start()
-
-local atcTonopahTest=FLIGHTCONTROL:New(AIRBASE.Nevada.Tonopah_Test_Range, 257.950,nil)
-atcTonopahTest:SetSpeedLimitTaxi(25)
-atcTonopahTest:SetLimitTaxi(3, false, 1)
-atcTonopahTest:SetLimitLanding(2, 2)
-atcTonopahTest:Start()
-
-local atcNellis=FLIGHTCONTROL:New(AIRBASE.Nevada.Nellis, 327,nil)
-atcNellis:SetSpeedLimitTaxi(25)
-atcNellis:SetLimitTaxi(4, false, 1)
-atcNellis:SetLimitLanding(4, 4)
-atcNellis:Start()
-
-local F16TonCreech = SPAWN:New( "F-16 Ton-Creech" )
-:InitLimit( 3 , 0 )
-:InitCleanUp(300)
-:OnSpawnGroup(
-    function(spawngrp)
-        local F16TonCreechFG1 = FLIGHTGROUP:New(spawngrp)
-        F16TonCreechFG1:SetFlightControl(atcTonopahTest)
-
-        function F16TonCreechFG1:OnAfterTakeoff(From, Event, To)
-            F16TonCreechFG1:SetFlightControl(atcCreech)
+            function B1BTonCreechFG1:OnAfterTakeoff(From, Event, To)
+                B1BTonCreechFG1:SetFlightControl(atcCreech)
+            end
         end
-    end
-)
-:SpawnScheduled( 1800 , .5 )
+    )
+    :SpawnAtAirbase(abTonopahTest, SPAWN.Takeoff.Cold)
+end, {}, 60, 1800)
 
-local B2TonTon = SPAWN:New( "B1B Ton-Ton" )
-:InitLimit( 3 , 0 )
-:InitCleanUp(300)
-:OnSpawnGroup(
-    function(spawngrp)
-        local B2TonTonFG1 = FLIGHTGROUP:New(spawngrp)
-        B2TonTonFG1:SetFlightControl(atcTonopahTest)
-
-        function B2TonTonFG1:OnAfterTakeoff(From, Event, To)
-            B2TonTonFG1:SetFlightControl(atcTonopahTest)
-        end
-    end
-)
-:SpawnScheduled( 1800 , .5 )
-
-TIMER:New( function()
+SCHEDULER:New(nil, function()
     local F16TonCreech = SPAWN:New( "F-16 Ton-Creech" )
     :InitLimit( 3 , 0 )
     :InitCleanUp(300)
@@ -117,10 +80,10 @@ TIMER:New( function()
             end
         end
     )
-    :SpawnScheduled( 1800 , .5 )
-end):Start(600)
+    :SpawnAtAirbase(abTonopahTest, SPAWN.Takeoff.Cold)
+end, {}, 60, 1800)
 
-TIMER:New( function()
+SCHEDULER:New(nil, function()
     local F16NellisTon = SPAWN:New( "F-16 Nellis-Ton" )
     :InitLimit( 3 , 0 )
     :InitCleanUp(300)
@@ -134,10 +97,10 @@ TIMER:New( function()
             end
         end
     )
-    :SpawnScheduled( 1800 , .5 )
-end):Start(600)
+    :SpawnAtAirbase(abNellis, SPAWN.Takeoff.Cold)
+end, {}, 600, 1200)
 
-TIMER:New( function()
+SCHEDULER:New(nil, function()
     local F4ENellisTon = SPAWN:New( "F-4E Nellis-Ton" )
     :InitLimit( 3 , 0 )
     :InitCleanUp(300)
@@ -151,18 +114,40 @@ TIMER:New( function()
             end
         end
     )
-    :SpawnScheduled( 1800 , .5 )
-end):Start(800)
+    :SpawnAtAirbase(abNellis, SPAWN.Takeoff.Cold)
+end, {}, 800, 1200)
 
-TIMER:New( function()
-    local F14BNellisNellis = SPAWN:New( "F-14B Nellis-Nellis" )
+SCHEDULER:New(nil, function()
+    local F15ENellisNellis = SPAWN:New( "F-15E Nellis-Nellis" )
     :InitLimit( 3 , 0 )
     :InitCleanUp(300)
     :OnSpawnGroup(
         function(spawngrp)
-            local F14BNellisNellisFG1 = FLIGHTGROUP:New(spawngrp)
-            F14BNellisNellisFG1:SetFlightControl(atcNellis)
+            local F15ENellisNellisFG1 = FLIGHTGROUP:New(spawngrp)
+            F15ENellisNellisFG1:SetFlightControl(atcNellis)
         end
     )
-    :SpawnScheduled( 1800 , .5 )
-end):Start(1000)
+    :SpawnAtAirbase(abNellis, SPAWN.Takeoff.Cold)
+end, {}, 800, 1800)
+
+SCHEDULER:New(nil, function()
+    local NEExitZone   = ZONE:New("NE Exit")
+
+    local C5NellisNEExit = SPAWN:New( "C5 Nellis-NEExit" )
+    :InitLimit( 3 , 0 )
+    :InitCleanUp(300)
+    :OnSpawnGroup(
+        function(spawngrp)
+            local C5NellisNEExitFG1 = FLIGHTGROUP:New(spawngrp)
+            C5NellisNEExitFG1:SetFlightControl(atcNellis)
+            C5NellisNEExitFG1:AddCheckZone(NEExitZone)
+            function C5NellisNEExitFG1:OnAfterEnterZonOnAfterEnterZone(From, Event, To, zone)
+                if zone == NEExitZone then
+                    spawngrp:Destroy()
+                end
+            end
+
+        end
+    )
+    :SpawnAtAirbase(abNellis, SPAWN.Takeoff.Cold)
+end, {}, 1000, 3600)

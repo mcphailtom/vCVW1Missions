@@ -106,6 +106,9 @@ function _SupportFlightOnMission(From, Event, To, Flightgroup, Mission, MissionM
     local fuellowthreshold = missionmanager.missions[mtype][mid].fuellowthreshold
     local fuelcritthreshold = missionmanager.missions[mtype][mid].fuelcritthreshold
 
+    -- Set the Flight Control for the flightgroup
+    flightgroup:SetFlightControl(atcNellis)
+    
     -- Set the right callsign for the flightgroups
     flightgroup:SetDefaultCallsign(missionmanager.missions[mtype][mid].callsignName,
         missionmanager.missions[mtype][mid].callsignNumber)
@@ -482,7 +485,7 @@ local ARS06 = SQUADRON:New("KC-135MPRS Template", 4, "6th Air Refueling Squadron
 ARS06:SetModex(100)
 ARS06:SetSkill(AI.Skill.EXCELLENT)
 ARS06:AddMissionCapability({ AUFTRAG.Type.TANKER }, 100)
-ARS06:SetTakeoffHot()
+ARS06:SetTakeoffCold()
 ARS06:SetMissionRange(300)
 
 -- KC-135 squadron.
@@ -490,7 +493,7 @@ local ARS09 = SQUADRON:New("KC-135 Template", 2, "9th Air Refueling Squadron")
 ARS09:SetModex(200)
 ARS09:SetSkill(AI.Skill.EXCELLENT)
 ARS09:AddMissionCapability({ AUFTRAG.Type.TANKER }, 100)
-ARS09:SetTakeoffHot()
+ARS09:SetTakeoffCold()
 ARS09:SetMissionRange(300)
 
 -- E-3A squadron.
@@ -498,7 +501,7 @@ local AAC963 = SQUADRON:New("E-3A Template", 2, "963rd Airborne Air Control Squa
 AAC963:SetModex(400)
 AAC963:SetSkill(AI.Skill.EXCELLENT)
 AAC963:AddMissionCapability({ AUFTRAG.Type.AWACS }, 100)
-AAC963:SetTakeoffHot()
+AAC963:SetTakeoffCold()
 AAC963:SetMissionRange(300)
 
 ---
