@@ -11,7 +11,7 @@ DogboneRange:SetSRSRangeInstructor(250.5, radio.modulation.AM, nil, "en-US", "ma
 DogboneRange:SetSRSRangeControl(395, radio.modulation.AM, nil, "en-US", "male", "Range Relay")
 
 DogboneRange:TrackRocketsOFF()
-DogboneRange:SetRangeRadius(5)
+DogboneRange:SetRangeRadius(15)
 
 DogboneRange:SetAutosaveOn(".\\range\\")
 
@@ -22,8 +22,7 @@ DogboneRange:Start()
 -- DCSBot Range announcments via Discord for range entry, exit, bomb results and strafe results
 function DogboneRange:OnAfterEnterRange(From, Event, To, player)
 	local player = player
-	player.playername = player.playername
-	player.airframe = player.airframe
+
 	local name = tostring(player.playername)
 	local aircraft = tostring(player.airframe)
 	dcsbot.sendBotMessage(name .. ' has entered the Dog Bone Lake Range in an ' .. aircraft .. ' the range is Hot!')
@@ -31,7 +30,7 @@ end
 
 function DogboneRange:OnAfterExitRange(From, Event, To, player)
 	local player = player
-	player.playername = player.playername
+
 	local name = tostring(player.playername)
 	dcsbot.sendBotMessage(name .. ' is cleared off the Dog Bone Lake Range, the range is Cold!')
 end
@@ -39,10 +38,7 @@ end
 function DogboneRange:OnAfterImpact(From, Event, To, result, player)
 	local player = player
 	local result = result
-	player.playername = player.playername
-	result.quality = result.quality
-	result.distance = result.distance
-	result.weapon = result.weapon
+	
 	local name = tostring(player.playername)
 	local score = tostring(result.quality)
 	local weapon = tostring(result.weapon)
@@ -63,9 +59,7 @@ end
 function DogboneRange:OnAfterStrafeResult(From, Event, To, player, result)
 	local player = player
 	local result = result
-	player.playername = player.playername
-	result.roundsQuality = result.roundsQuality
-	result.roundsHit = result.roundsHit
+
 	local name = tostring(player.playername)
 	local score = tostring(result.roundsQuality)
 	local hits = tonumber(result.roundsHit)
@@ -101,7 +95,7 @@ R62B:SetSRSRangeInstructor(249.5, radio.modulation.AM, nil, "en-US", "male", "Ra
 R62B:SetSRSRangeControl(394, radio.modulation.AM, nil, "en-US", "male", "Range Relay")
 
 R62B:TrackRocketsOFF()
-R62B:SetRangeRadius(5)
+R62B:SetRangeRadius(15)
 
 R62B:SetAutosaveOn(".\\range\\")
 
@@ -112,8 +106,7 @@ R62B:Start()
 -- DCSBot Range announcments via Discord for range entry, exit, bomb results and strafe results
 function R62B:OnAfterEnterRange(From, Event, To, player)
 	local player = player
-	player.playername = player.playername
-	player.airframe = player.airframe
+
 	local name = tostring(player.playername)
 	local aircraft = tostring(player.airframe)
 	dcsbot.sendBotMessage(name .. ' has entered Range 62A in an ' .. aircraft .. ' the range is Hot!')
@@ -129,10 +122,7 @@ end
 function R62B:OnAfterImpact(From, Event, To, result, player)
 	local player = player
 	local result = result
-	player.playername = player.playername
-	result.quality = result.quality
-	result.distance = result.distance
-	result.weapon = result.weapon
+
 	local name = tostring(player.playername)
 	local score = tostring(result.quality)
 	local weapon = tostring(result.weapon)
@@ -152,9 +142,7 @@ end
 function R62B:OnAfterStrafeResult(From, Event, To, player, result)
 	local player = player
 	local result = result
-	player.playername = player.playername
-	result.roundsQuality = result.roundsQuality
-	result.roundsHit = result.roundsHit
+	
 	local name = tostring(player.playername)
 	local score = tostring(result.roundsQuality)
 	local hits = tonumber(result.roundsHit)

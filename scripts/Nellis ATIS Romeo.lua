@@ -2,7 +2,7 @@ local nellisAB = AIRBASE:FindByName(AIRBASE.Nevada.Nellis)
 
 local FileName = "NellisATIS.ogg"
 local FolderPath = [[D:\DCS Mission Data\CVW-1\1989 Nevada Training Range\ATIS\Romeo]]
-local Duration = 23 -- Will use 3 seconds as default
+local Duration = 21 -- Will use 3 seconds as default
 local UseSrs = true
 local InstallPathSrs = [[D:\DCS-SimpleRadio-Standalone]]
 local Coordinate = nellisAB:GetCoordinate()
