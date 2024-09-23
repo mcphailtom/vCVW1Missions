@@ -1,9 +1,9 @@
 -- Table of bombing target names.
-local bombtargets = { "NTTR DBL Circle" }
+local DBRbombtargets = { "NTTR DBL Circle" }
 
-DogboneRange = RANGE:New("NTTR Range 62A")
+local DogboneRange = RANGE:New("NTTR Range 62A")
 
-DogboneRange:AddBombingTargets(bombtargets, 10)
+DogboneRange:AddBombingTargets(DBRbombtargets, 10)
 
 -- Set Range Frequencys and initialise
 DogboneRange:SetSRS('')
@@ -69,7 +69,7 @@ function DogboneRange:OnAfterStrafeResult(From, Event, To, player, result)
 end
 
 -- Table of bombing target names.
-local bombtargets = { "NTTR 62B Range Static *Silhouette (MiG-29)-1","NTTR 62B Range Static *Silhouette (MiG-29)-2", "NTTR 62B Range Static *NTTR Target 62-13 DMPI 313-1", "NTTR 62B Range Static *NTTR Target 62-71 DMPI 119-2","NTTR 62B Range Static *NTTR Target 62-13 DMPI 310-1",
+local R62Bbombtargets = { "NTTR 62B Range Static *Silhouette (MiG-29)-1","NTTR 62B Range Static *Silhouette (MiG-29)-2", "NTTR 62B Range Static *NTTR Target 62-13 DMPI 313-1", "NTTR 62B Range Static *NTTR Target 62-71 DMPI 119-2","NTTR 62B Range Static *NTTR Target 62-13 DMPI 310-1",
 "NTTR 62B Range Static *NTTR Target 62-71 DMPI 119-1", "NTTR 62B Range Static *NTTR Target 62-32 DMPI 205-1", "NTTR 62B Range Static *NTTR Target 62-22 DMPI 217-2", "NTTR 62B Range Static *SeaLand 1x1 (Tan)-7","NTTR 62B Range Static *SeaLand 1x1 (Tan)-6",
 "NTTR 62B Range Static *SeaLand 1x1 (Tan)-4","NTTR 62B Range Static *SeaLand 1x1 (Tan)-1","NTTR 62B Range Static *SeaLand 1x1 (Tan)-3","NTTR 62B Range Static *SeaLand 1x1 (Tan)-2","NTTR 62B Range Static *SeaLand 1x1 (Tan)-5","NTTR 62B Range Static *SeaLand 1x1 (Tan)-10",
 "NTTR 62B Range Static *SeaLand 1x1 (Tan)-9","NTTR 62B Range Static *SeaLand 1x1 (Tan)-8","NTTR 62B Range Static *NTTR Target 62-22 DMPI 206-1","NTTR 62B Range Static *NTTR Target 62-22 DMPI 208-1","NTTR 62B Range Static *NTTR Target 62-22 DMPI 210-1","NTTR 62B Range Static *NTTR Target 62-22 DMPI 208-2",
@@ -85,9 +85,9 @@ local bombtargets = { "NTTR 62B Range Static *Silhouette (MiG-29)-1","NTTR 62B R
 "NTTR 62B Range Static *NTTR Target 62-41 DMPI 121-1","NTTR 62B Range Static *NTTR Target 62-41 DMPI 121-2","NTTR 62B Range Static *NTTR Target 62-41 DMPI 121-3","NTTR 62B Range Static *NTTR Target 62-41 DMPI 121-4","NTTR 62B Range Static *NTTR Target 62-41 DMPI 121-5",
 "NTTR 62B Range Static *NTTR Target 62-41 DMPI 121-6","NTTR 62B Range Static *NTTR Target 66-07 DMPI 05-1" }
 
-R62B = RANGE:New("NTTR Range 62A")
+local R62B = RANGE:New("NTTR Range 62B")
 
-R62B:AddBombingTargets(bombtargets, 3)
+R62B:AddBombingTargets(R62Bbombtargets, 3)
 
 -- Set Range Frequencys and initialise
 R62B:SetSRS('')
