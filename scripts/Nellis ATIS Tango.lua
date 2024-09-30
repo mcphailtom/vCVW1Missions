@@ -1,7 +1,7 @@
 local nellisAB = AIRBASE:FindByName(AIRBASE.Nevada.Nellis)
 
 local FileName = "NellisATIS.ogg"
-local FolderPath = [[D:\DCS Mission Data\CVW-1\1989 Nevada Training Range\ATIS\Tango)]]
+local FolderPath = [[D:\DCS Mission Data\CVW-1\1989 Nevada Training Range\ATIS\Tango]]
 local Duration = 22 -- Will use 3 seconds as default
 local UseSrs = true
 local InstallPathSrs = [[D:\DCS-SimpleRadio-Standalone]]
@@ -13,4 +13,4 @@ msrs:SetCoordinate(Coordinate)
 
 SCHEDULER:New(nil, function()
     msrs:PlaySoundFile(nellisATIS)
-end, {}, 5, 45)
+end, {}, 5, 30)

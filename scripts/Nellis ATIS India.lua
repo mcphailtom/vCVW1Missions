@@ -13,4 +13,4 @@ msrs:SetCoordinate(Coordinate)
 
 SCHEDULER:New(nil, function()
     msrs:PlaySoundFile(nellisATIS)
-end, {}, 5, 45)
+end, {}, 5, 30)
