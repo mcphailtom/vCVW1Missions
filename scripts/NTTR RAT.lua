@@ -46,7 +46,7 @@ local AA737AirlineZone4 = SPAWN:New("AA737 AirlineZone4")
 
 -- Military Traffic for NTTR RAT
 local B1BTonCreech = SPAWN:New("B1B Ton-Creech")
-    :InitLimit(3, 0)
+    :InitLimit(1, 0)
     :InitCleanUp(300)
     :InitRepeatOnLanding()
     :OnSpawnGroup(
@@ -67,7 +67,7 @@ local B1BTonCreech = SPAWN:New("B1B Ton-Creech")
 
 
 local F16TonCreech = SPAWN:New("F-16 Ton-Creech")
-    :InitLimit(3, 0)
+    :InitLimit(1, 0)
     :InitCleanUp(300)
     :InitRepeatOnLanding()
     :OnSpawnGroup(
@@ -87,7 +87,7 @@ local F16TonCreech = SPAWN:New("F-16 Ton-Creech")
 
 TIMER:New(function()
     local F16NellisTon = SPAWN:New("F-16 Nellis-Ton")
-        :InitLimit(3, 0)
+        :InitLimit(1, 0)
         :InitCleanUp(300)
         :OnSpawnGroup(
             function(spawngrp)
@@ -107,7 +107,7 @@ end):Start(600)
 
 TIMER:New(function()
     local F4ENellisTon = SPAWN:New("F-4E Nellis-Ton")
-        :InitLimit(3, 0)
+        :InitLimit(1, 0)
         :InitCleanUp(300)
         :OnSpawnGroup(
             function(spawngrp)
@@ -127,39 +127,17 @@ end):Start(300)
 
 
 TIMER:New(function()
-    local F15ENellisNellis = SPAWN:New("F-15E Nellis-Nellis")
-        :InitLimit(3, 0)
+    local F15ENellisCreech = SPAWN:New("F-15E Nellis-Creech")
+        :InitLimit(1, 0)
         :InitCleanUp(300)
         :OnSpawnGroup(
             function(spawngrp)
-                local F15ENellisNellisFG1 = FLIGHTGROUP:New(spawngrp)
-                F15ENellisNellisFG1:SetFlightControl(atcNellis)
-                F15ENellisNellisFG1:SetFuelLowRTB(false)
-                F15ENellisNellisFG1:SetFuelCriticalRTB(true)
-                F15ENellisNellisFG1:SetFuelLowRefuel(true)
+                local F15ENellisCreechFG1 = FLIGHTGROUP:New(spawngrp)
+                F15ENellisCreechFG1:SetFlightControl(atcNellis)
+                F15ENellisCreechFG1:SetFuelLowRTB(false)
+                F15ENellisCreechFG1:SetFuelCriticalRTB(true)
+                F15ENellisCreechFG1:SetFuelLowRefuel(true)
             end
         )
         :SpawnScheduled(1800, 0.5)
 end):Start(800)
-
-
-local NEExitZone = ZONE:New("NE Exit")
-
-TIMER:New(function()
-    local C5NellisNEExit = SPAWN:New("C5 Nellis-NEExit")
-        :InitLimit(3, 0)
-        :InitCleanUp(300)
-        :OnSpawnGroup(
-            function(spawngrp)
-                local C5NellisNEExitFG1 = FLIGHTGROUP:New(spawngrp)
-                C5NellisNEExitFG1:SetFlightControl(atcNellis)
-                C5NellisNEExitFG1:AddCheckZone(NEExitZone)
-                function C5NellisNEExitFG1:OnAfterEnterZonOnAfterEnterZone(From, Event, To, zone)
-                    if zone == NEExitZone then
-                        spawngrp:Destroy()
-                    end
-                end
-            end
-        )
-        :SpawnScheduled(3600, 0.5)
-end):Start(1000)

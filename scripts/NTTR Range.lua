@@ -12,7 +12,7 @@ local strafepit_south = { "DBL Strafe Pit-2" }
 
 local DogboneRange = RANGE:New("NTTR Range 62A")
 
-DogboneRange:AddBombingTargets(DBRbombtargets, 10)
+DogboneRange:AddBombingTargets(DBRbombtargets, 50)
 
 local fld = DogboneRange:GetFoullineDistance("DBL Strafe Pit-1", "DBL Foul Line-1")
 DogboneRange:AddStrafePit(strafepit_north, nil, nil, nil, false, nil, fld)
@@ -24,7 +24,7 @@ DogboneRange:SetSRSRangeInstructor(250.5, radio.modulation.AM, nil, "en-US", "ma
 DogboneRange:SetSRSRangeControl(395, radio.modulation.AM, nil, "en-US", "male", "Range Relay")
 
 DogboneRange:TrackRocketsOFF()
-DogboneRange:SetRangeRadius(15)
+DogboneRange:SetRangeZone(ZONE:FindByName("DBL Range Zone"))
 
 DogboneRange:SetAutosaveOn(".\\range\\")
 
@@ -82,53 +82,11 @@ function DogboneRange:OnAfterStrafeResult(From, Event, To, player, result)
 end
 
 -- Table of bombing target names.
-local R62Bbombtargets = { "NTTR 62B Range Static *Silhouette (MiG-29)-1", "NTTR 62B Range Static *Silhouette (MiG-29)-2",
-	"NTTR 62B Range Static *NTTR Target 62-13 DMPI 313-1", "NTTR 62B Range Static *NTTR Target 62-71 DMPI 119-2",
-	"NTTR 62B Range Static *NTTR Target 62-13 DMPI 310-1",
-	"NTTR 62B Range Static *NTTR Target 62-71 DMPI 119-1", "NTTR 62B Range Static *NTTR Target 62-32 DMPI 205-1",
-	"NTTR 62B Range Static *NTTR Target 62-22 DMPI 217-2", "NTTR 62B Range Static *SeaLand 1x1 (Tan)-7",
-	"NTTR 62B Range Static *SeaLand 1x1 (Tan)-6",
-	"NTTR 62B Range Static *SeaLand 1x1 (Tan)-4", "NTTR 62B Range Static *SeaLand 1x1 (Tan)-1",
-	"NTTR 62B Range Static *SeaLand 1x1 (Tan)-3", "NTTR 62B Range Static *SeaLand 1x1 (Tan)-2",
-	"NTTR 62B Range Static *SeaLand 1x1 (Tan)-5", "NTTR 62B Range Static *SeaLand 1x1 (Tan)-10",
-	"NTTR 62B Range Static *SeaLand 1x1 (Tan)-9", "NTTR 62B Range Static *SeaLand 1x1 (Tan)-8",
-	"NTTR 62B Range Static *NTTR Target 62-22 DMPI 206-1", "NTTR 62B Range Static *NTTR Target 62-22 DMPI 208-1",
-	"NTTR 62B Range Static *NTTR Target 62-22 DMPI 210-1", "NTTR 62B Range Static *NTTR Target 62-22 DMPI 208-2",
-	"NTTR 62B Range Static *NTTR Target 62-22 DMPI 214-1", "NTTR 62B Range Static *NTTR Target 62-22 DMPI 217-1",
-	"NTTR 62B Range Static *NTTR Target 62-22 DMPI 214-2", "NTTR 62B Range Static *NTTR Target 62-21 DMPI 130-4",
-	"NTTR 62B Range Static *NTTR Target 62-21 DMPI 147-2",
-	"NTTR 62B Range Static *NTTR Target 62-21 DMPI 135-1", "NTTR 62B Range Static *NTTR Target 62-21 DMPI 111-3",
-	"NTTR 62B Range Static *NTTR Target 76-01 DMPI 13-2", "NTTR 62B Range Static *NTTR Target 76-01 DMPI 13-1",
-	"NTTR 62B Range Static *NTTR Target 62-21 DMPI 130-3",
-	"NTTR 62B Range Static *NTTR Target 62-21 DMPI 126-1", "NTTR 62B Range Static *NTTR Target 62-62 DMPI 201-1",
-	"NTTR 62B Range Static *NTTR Target 62-13 DMPI 321-1", "NTTR 62B Range Static *NTTR Target 62-21 DMPI 113-2",
-	"NTTR 62B Range Static *NTTR Target 62-21 DMPI 130-2",
-	"NTTR 62B Range Static *NTTR Target 62-21 DMPI 113-3", "NTTR 62B Range Static *NTTR Target 62-21 DMPI 111-1",
-	"NTTR 62B Range Static *NTTR Target 62-21 DMPI 130-5", "NTTR 62B Range Static *NTTR Target 62-21 DMPI 116-1",
-	"NTTR 62B Range Static *NTTR Target 62-21 DMPI 102-4",
-	"NTTR 62B Range Static *NTTR Target 62-21 DMPI 111-2", "NTTR 62B Range Static *NTTR Target 62-21 DMPI 102-3",
-	"NTTR 62B Range Static *NTTR Target 62-21 DMPI 131-1", "NTTR 62B Range Static *NTTR Target 62-21 DMPI 113-1",
-	"NTTR 62B Range Static *NTTR Target 62-21 DMPI 126-2",
-	"NTTR 62B Range Static *NTTR Target 62-21 DMPI 128-1", "NTTR 62B Range Static *NTTR Target 62-21 DMPI 124-1",
-	"NTTR 62B Range Static *NTTR Target 62-21 DMPI 102-1", "NTTR 62B Range Static *NTTR Target 62-21 DMPI 130-1",
-	"NTTR 62B Range Static *NTTR Target 62-11 DMPI 01-1",
-	"NTTR 62B Range Static *NTTR Target 62-13 DMPI 344-1", "NTTR 62B Range Static *Bunker, Concrete (Sand 1)-1",
-	"NTTR 62B Range Static *Bunker, Concrete (Sand 1)-2", "NTTR 62B Range Static *Bunker, Concrete (Sand 1)-3",
-	"NTTR 62B Range Static *Bunker, Concrete (Sand 1)-4",
-	"NTTR 62B Range Static *Bunker, Concrete (Sand 1)-5", "NTTR 62B Range Static *Bunker, Concrete (Sand 1)-6",
-	"NTTR 62B Range Static *Bunker, Concrete (Sand 1)-7", "NTTR 62B Range Static *Bunker, Concrete (Sand 1)-8",
-	"NTTR 62B Range Static *Bunker, Concrete (Sand 1)-9",
-	"NTTR 62B Range Static *Bunker, Concrete (Sand 1)-10", "NTTR 62B Range Static *Bunker, Concrete (Sand 1)-11",
-	"NTTR 62B Range Static *Bunker, Concrete (Sand 1)-13", "NTTR 62B Range Static *Bunker, Concrete (Sand 1)-12",
-	"NTTR 62B Range Static *NTTR Target 62-13 DMPI 334-1",
-	"NTTR 62B Range Static *NTTR Target 62-41 DMPI 121-1", "NTTR 62B Range Static *NTTR Target 62-41 DMPI 121-2",
-	"NTTR 62B Range Static *NTTR Target 62-41 DMPI 121-3", "NTTR 62B Range Static *NTTR Target 62-41 DMPI 121-4",
-	"NTTR 62B Range Static *NTTR Target 62-41 DMPI 121-5",
-	"NTTR 62B Range Static *NTTR Target 62-41 DMPI 121-6", "NTTR 62B Range Static *NTTR Target 66-07 DMPI 05-1" }
+local R62Bbombtargets = { "NTTR 62B Circle" }
 
 local R62B = RANGE:New("NTTR Range 62B")
 
-R62B:AddBombingTargets(R62Bbombtargets, 3)
+R62B:AddBombingTargets(R62Bbombtargets, 10)
 
 -- Set Range Frequencys and initialise
 R62B:SetSRS(rgSRSPath, rgSRSPort, coalition.side.BLUE, 249.5, radio.modulation.AM, 1.0, rgSRSGoogle)
@@ -136,7 +94,7 @@ R62B:SetSRSRangeInstructor(249.5, radio.modulation.AM, nil, "en-US", "male", "Ra
 R62B:SetSRSRangeControl(394, radio.modulation.AM, nil, "en-US", "male", "Range Relay")
 
 R62B:TrackRocketsOFF()
-R62B:SetRangeRadius(15)
+R62B:SetRangeZone(ZONE:FindByName("62B Range Zone"))
 
 R62B:SetAutosaveOn(".\\range\\")
 
@@ -171,7 +129,7 @@ function R62B:OnAfterImpact(From, Event, To, result, player)
 	dcsbot.sendBotMessage(name ..
 		' has completed their ' ..
 		weapon ..
-		' run on Range 62A their grading was ' .. score .. ' at ' .. distance .. ' meters from the bull ') -- results
+		' run on Range 62B their grading was ' .. score .. ' at ' .. distance .. ' meters from the bull ') -- results
 	local client = player.playername
 	if result.quality == "EXCELLENT" then
 	elseif result.quality == "GOOD" then
@@ -188,6 +146,6 @@ function R62B:OnAfterStrafeResult(From, Event, To, player, result)
 	local score = tostring(result.roundsQuality)
 	local hits = tonumber(result.roundsHit)
 	dcsbot.sendBotMessage(name ..
-		' has completed a strafe pass on Range 62A, Accuracy was graded as ' ..
+		' has completed a strafe pass on Range 62B, Accuracy was graded as ' ..
 		score .. ' with ' .. hits .. ' rounds on target ') -- results
 end

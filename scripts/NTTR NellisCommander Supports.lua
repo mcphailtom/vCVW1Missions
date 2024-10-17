@@ -81,10 +81,10 @@ function _NewSupportMission(Commander, MissionManager, MissionType, MissionID)
     supportMission:SetName(misparams.name)
     supportMission.mid = mid
 
-    -- if misparams.firstAssetLaunch then
-    --     supportMission:SetTeleport(true)
-    --     missionmanager.missions[mtype][mid].firstAssetLaunch = false
-    -- end
+    if misparams.firstAssetLaunch then
+        supportMission:SetTeleport(true)
+        missionmanager.missions[mtype][mid].firstAssetLaunch = false
+    end
 
     commander:AddMission(supportMission)
 end
@@ -108,7 +108,7 @@ function _SupportFlightOnMission(From, Event, To, Flightgroup, Mission, MissionM
 
     -- Set the Flight Control for the flightgroup
     flightgroup:SetFlightControl(atcNellis)
-    
+
     -- Set the right callsign for the flightgroups
     flightgroup:SetDefaultCallsign(missionmanager.missions[mtype][mid].callsignName,
         missionmanager.missions[mtype][mid].callsignNumber)
