@@ -1,7 +1,7 @@
 -- SRS
-local rgSRSPath = "D:\\DCS-SimpleRadio-Standalone"
-local rgSRSPort = 5002
-local rgSRSGoogle = "D:\\DCS-SimpleRadio-Standalone\\creds\\tomdcsatc-f2ffe3cfee37.json"
+-- local rgSRSPath = "D:\\DCS-SimpleRadio-Standalone"
+-- local rgSRSPort = 5002
+-- local rgSRSGoogle = "D:\\DCS-SimpleRadio-Standalone\\creds\\tomdcsatc-f2ffe3cfee37.json"
 
 -- Table of bombing target names.
 local DBRbombtargets = { "NTTR DBL Circle" }
@@ -19,9 +19,9 @@ DogboneRange:AddStrafePit(strafepit_north, nil, nil, nil, false, nil, fld)
 DogboneRange:AddStrafePit(strafepit_south, nil, nil, nil, false, nil, fld)
 
 -- Set Range Frequencys and initialise
-DogboneRange:SetSRS(rgSRSPath, rgSRSPort, coalition.side.BLUE, 250.5, radio.modulation.AM, 1.0, rgSRSGoogle)
-DogboneRange:SetSRSRangeInstructor(250.5, radio.modulation.AM, nil, "en-US", "male", "Range Relay")
-DogboneRange:SetSRSRangeControl(395, radio.modulation.AM, nil, "en-US", "male", "Range Relay")
+-- DogboneRange:SetSRS(rgSRSPath, rgSRSPort, coalition.side.BLUE, 250.5, radio.modulation.AM, 1.0, rgSRSGoogle)
+-- DogboneRange:SetSRSRangeInstructor(250.5, radio.modulation.AM, nil, "en-US", "male", "Range Relay")
+-- DogboneRange:SetSRSRangeControl(395, radio.modulation.AM, nil, "en-US", "male", "Range Relay")
 
 DogboneRange:TrackRocketsOFF()
 DogboneRange:SetRangeZone(ZONE:FindByName("DBL Range Zone"))
@@ -89,9 +89,9 @@ local R62B = RANGE:New("NTTR Range 62B")
 R62B:AddBombingTargets(R62Bbombtargets, 10)
 
 -- Set Range Frequencys and initialise
-R62B:SetSRS(rgSRSPath, rgSRSPort, coalition.side.BLUE, 249.5, radio.modulation.AM, 1.0, rgSRSGoogle)
-R62B:SetSRSRangeInstructor(249.5, radio.modulation.AM, nil, "en-US", "male", "Range Relay")
-R62B:SetSRSRangeControl(394, radio.modulation.AM, nil, "en-US", "male", "Range Relay")
+-- R62B:SetSRS(rgSRSPath, rgSRSPort, coalition.side.BLUE, 249.5, radio.modulation.AM, 1.0, rgSRSGoogle)
+-- R62B:SetSRSRangeInstructor(249.5, radio.modulation.AM, nil, "en-US", "male", "Range Relay")
+-- R62B:SetSRSRangeControl(394, radio.modulation.AM, nil, "en-US", "male", "Range Relay")
 
 R62B:TrackRocketsOFF()
 R62B:SetRangeZone(ZONE:FindByName("62B Range Zone"))
