@@ -4,15 +4,6 @@
 local reconZoneSet = SET_ZONE:New():FilterPrefixes("Recon Zone"):FilterStart()
 local joshuaZone = ZONE_POLYGON:NewFromDrawing("Joshua")
 
-MobileGroup = SPAWN:New("Mobile Targets")
-    :InitKeepUnitNames()
-    :OnSpawnGroup(
-        function(spawngrp)
-            local MBGroupAG = ARMYGROUP:New(spawngrp)
-        end
-    )
-    :Spawn()
-
 
 local Recon = SPAWN:New("Recon")
 Recon:InitLimit(2, 0)

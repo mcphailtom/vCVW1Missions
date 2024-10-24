@@ -144,16 +144,30 @@ end
 
 --- Function called when a player gets graded by the LSO.
 function AirbossUSSAmerica:OnAfterLSOGrade(From, Event, To, playerData, grade)
-  local PlayerData = playerData --Ops.Airboss#AIRBOSS.PlayerData
-  local Grade = grade         --Ops.Airboss#AIRBOSS.LSOgrade
+  player_name = playerData.name:gsub('[%p]', '')
+  trapsheet = "AIRBOSS-trapsheet-" .. player_name
+  AirbossUSSAmerica:SetTrapSheet(nil, trapsheet)
+  self:_SaveTrapSheet(playerData, grade)
 
-  ----------------------------------------
-  --- Interface your Discord bot here! ---
-  ----------------------------------------
+  -- Send the player's grade to the DCS-BIOS Discord bot.
+  msg = {}
+  msg.command = "onMissionEvent"
+  msg.eventName = "S_EVENT_AIRBOSS"
+  msg.initiator = {}
+  msg.initiator.name = playerData.name
+  msg.place = {}
+  msg.place.name = myGrade.carriername
+  msg.points = myGrade.points
+  msg.grade = myGrade.grade
+  msg.details = myGrade.details
+  msg.case = myGrade.case
+  msg.wire = playerData.wire
+  msg.trapsheet = trapsheet
+  msg.time = timer.getTime()
+  dcsbot.sendBotTable(msg)
 
-  local score = tonumber(Grade.points)
-  local name = tostring(PlayerData.name)
-
-  -- Report LSO grade to dcs.log file.
+  -- Log the player's score to the DCS.log file.
+  local score = tonumber(grade.points)
+  local name = tostring(playerData.name)
   env.info(string.format("Player %s scored %.1f", name, score))
 end
