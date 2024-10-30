@@ -92,18 +92,6 @@ AirbossUSSAmerica:SetMenuRecovery(45, 25, false)
 -- Remove landed AI planes from flight deck.
 AirbossUSSAmerica:SetDespawnOnEngineShutdown(true)
 
--- Load all saved player grades from your "Saved Games\DCS" folder (if lfs was desanitized).
-AirbossUSSAmerica:Load()
-
--- Automatically save player results to your "Saved Games\DCS" folder each time a player get a final grade from the LSO.
-AirbossUSSAmerica:SetAutoSave()
-
--- Enable trap sheet.
-AirbossUSSAmerica:SetTrapSheet()
-
--- Enable FunkMan Discord Bot.
-AirbossUSSAmerica:SetFunkManOn(10042, "127.0.0.1")
-
 -- Start airboss class.
 AirbossUSSAmerica:Start()
 
@@ -142,32 +130,32 @@ function rescuehelo:OnAfterReturned(From, Event, To, airbase)
   self:__Stop(300)
 end
 
---- Function called when a player gets graded by the LSO.
-function AirbossUSSAmerica:OnAfterLSOGrade(From, Event, To, playerData, grade)
-  player_name = playerData.name:gsub('[%p]', '')
-  trapsheet = "AIRBOSS-trapsheet-" .. player_name
-  AirbossUSSAmerica:SetTrapSheet(nil, trapsheet)
-  self:_SaveTrapSheet(playerData, grade)
+-- --- Function called when a player gets graded by the LSO.
+-- function AirbossUSSAmerica:OnAfterLSOGrade(From, Event, To, playerData, grade)
+--   player_name = playerData.name:gsub('[%p]', '')
+--   trapsheet = "AIRBOSS-trapsheet-" .. player_name
+--   AirbossUSSAmerica:SetTrapSheet(nil, trapsheet)
+--   self:_SaveTrapSheet(playerData, grade)
 
-  -- Send the player's grade to the DCS-BIOS Discord bot.
-  msg = {}
-  msg.command = "onMissionEvent"
-  msg.eventName = "S_EVENT_AIRBOSS"
-  msg.initiator = {}
-  msg.initiator.name = playerData.name
-  msg.place = {}
-  msg.place.name = myGrade.carriername
-  msg.points = myGrade.points
-  msg.grade = myGrade.grade
-  msg.details = myGrade.details
-  msg.case = myGrade.case
-  msg.wire = playerData.wire
-  msg.trapsheet = trapsheet
-  msg.time = timer.getTime()
-  dcsbot.sendBotTable(msg)
+--   -- Send the player's grade to the DCS-BIOS Discord bot.
+--   msg = {}
+--   msg.command = "onMissionEvent"
+--   msg.eventName = "S_EVENT_AIRBOSS"
+--   msg.initiator = {}
+--   msg.initiator.name = playerData.name
+--   msg.place = {}
+--   msg.place.name = myGrade.carriername
+--   msg.points = myGrade.points
+--   msg.grade = myGrade.grade
+--   msg.details = myGrade.details
+--   msg.case = myGrade.case
+--   msg.wire = playerData.wire
+--   msg.trapsheet = trapsheet
+--   msg.time = timer.getTime()
+--   dcsbot.sendBotTable(msg)
 
-  -- Log the player's score to the DCS.log file.
-  local score = tonumber(grade.points)
-  local name = tostring(playerData.name)
-  env.info(string.format("Player %s scored %.1f", name, score))
-end
+--   -- Log the player's score to the DCS.log file.
+--   local score = tonumber(grade.points)
+--   local name = tostring(playerData.name)
+--   env.info(string.format("Player %s scored %.1f", name, score))
+-- end
