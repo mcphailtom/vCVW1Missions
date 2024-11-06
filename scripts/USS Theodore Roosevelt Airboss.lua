@@ -2,8 +2,7 @@
 _SETTINGS:SetPlayerMenuOff()
 
 -- S-3B Recovery Tanker
-local tanker = RECOVERYTANKER:New("CVN-71 USS Theodore Roosevelt", "VS-32 Recovery Tanker")
---tanker:SetUseUncontrolledAircraft()
+local tanker = RECOVERYTANKER:New(UNIT:FindByName("CVN-71 USS Theodore Roosevelt"), "VS-32 Recovery Tanker")
 tanker:SetTakeoffCold()
 tanker:SetRadio(252.5)
 tanker:SetAltitude(12059)

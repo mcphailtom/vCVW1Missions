@@ -1,28 +1,26 @@
-----------------------------------------------------------------------------------------
----
--- Name: CV-66 USS America
--- Author: Nords
-----------------------------------------------------------------------------------------
+-- BASE:TraceOnOff(true)
+-- BASE:TraceLevel(1)
+-- BASE:TraceClass("AIRBOSS")
+-- BASE:TraceClass("RECOVERYTANKER")
+-- BASE:TraceClass("RESCUEHELO")
 
 -- No MOOSE settings menu. Comment out this line if required.
 _SETTINGS:SetPlayerMenuOff()
 
 -- S-3B Recovery Tanker spawning on CV-66 USS America.
-local tanker = RECOVERYTANKER:New("CV-66 USS America", "VS-32 Tanker | 252.500MHz")
-tanker:SetUseUncontrolledAircraft()
+local tanker = RECOVERYTANKER:New(UNIT:FindByName("CV-66 USS America"), "VS-32 Tanker")
 tanker:SetTakeoffCold()
 tanker:SetRadio(252.5)
 tanker:SetAltitude(12059)
 tanker:SetCallsign(CALLSIGN.AWACS.Mauler, 5)
 tanker:SetModex(702)
 tanker:SetRespawnOn()
-tanker:SetTACAN(91, "TEX")
+tanker:SetTACAN(91, "MLR")
 tanker:__Start(800)
 
 -- E-2D AWACS spawning on CV-66 USS America.
-local awacs = RECOVERYTANKER:New("CV-66 USS America", "VAW-123 AWACS | 255.500MHz")
+local awacs = RECOVERYTANKER:New(UNIT:FindByName("CV-66 USS America"), "VAW-123 AWACS")
 awacs:SetAWACS()
-awacs:SetUseUncontrolledAircraft()
 awacs:SetTakeoffCold()
 awacs:SetRadio(255.5)
 awacs:SetAltitude(27897)
@@ -34,8 +32,7 @@ awacs:SetTACAN(2, "FOC")
 awacs:__Start(800)
 
 -- Rescue Helo with home base CV-66 USS America. Has to be a global object!
-rescuehelo = RESCUEHELO:New("CV-66 USS America", "HS-11 Plane Guard")
-rescuehelo:SetUseUncontrolledAircraft()
+rescuehelo = RESCUEHELO:New(UNIT:FindByName("CV-66 USS America"), "HS-11 Plane Guard")
 rescuehelo:SetTakeoffCold()
 rescuehelo:SetModex(615)
 rescuehelo:SetRespawnOn()
