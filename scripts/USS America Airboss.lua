@@ -7,6 +7,9 @@
 -- No MOOSE settings menu. Comment out this line if required.
 _SETTINGS:SetPlayerMenuOff()
 
+-- Create AIRBOSS object.
+local AirbossUSSAmerica = AIRBOSS:New("CV-66 USS America")
+
 -- S-3B Recovery Tanker spawning on CV-66 USS America.
 local tanker = RECOVERYTANKER:New(UNIT:FindByName("CV-66 USS America"), "VS-32 Tanker")
 tanker:SetTakeoffCold()
@@ -16,6 +19,7 @@ tanker:SetCallsign(CALLSIGN.AWACS.Mauler, 5)
 tanker:SetModex(702)
 tanker:SetRespawnOn()
 tanker:SetTACAN(91, "MLR")
+tanker:SetRecoveryAirboss(AirbossUSSAmerica)
 tanker:__Start(800)
 
 -- E-2D AWACS spawning on CV-66 USS America.
@@ -29,6 +33,7 @@ awacs:SetRacetrackDistances(30, 15)
 awacs:SetModex(600)
 awacs:SetRespawnOn()
 awacs:SetTACAN(2, "FOC")
+awacs:SetRecoveryAirboss(AirbossUSSAmerica)
 awacs:__Start(800)
 
 -- Rescue Helo with home base CV-66 USS America. Has to be a global object!
@@ -38,8 +43,7 @@ rescuehelo:SetModex(615)
 rescuehelo:SetRespawnOn()
 rescuehelo:__Start(800)
 
--- Create AIRBOSS object.
-local AirbossUSSAmerica = AIRBOSS:New("CV-66 USS America")
+
 
 -- Set as Nimitz carrier class.
 AirbossUSSAmerica:_InitStennis()
