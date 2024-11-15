@@ -1,2 +1,2 @@
 # CVW-1 Mission Repository
-![image](https://github.com/user-attachments/assets/64ce3669-4987-4fdc-bb84-32d4e2f92fda)
+![vCVW-1](https://github.com/user-attachments/assets/9d430158-bd28-4220-b66c-82c7938d36d9)
